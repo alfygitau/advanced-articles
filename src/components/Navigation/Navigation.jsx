@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import AuthContext from "../../contexts/AuthContext/AuthProvider";
 
 const Navigation = () => {
+  const navigate = useNavigate();
+
+  const { auth } = useContext(AuthContext);
+  const user = auth.user;
+  console.log("user", user);
+
   const linkStyles = {
     textDecoration: "none",
     color: "black",
     textTransform: "uppercase",
     marginRight: "20px",
   };
-
-  const navigate = useNavigate();
 
   return (
     <Wrapper>
@@ -42,6 +47,16 @@ const Navigation = () => {
         <NavLink style={linkStyles} to="/create">
           Create Article
         </NavLink>
+        {user ? (
+          <>
+            <NavLink style={linkStyles} to="/profile">
+              {user.firstName}
+            </NavLink>{" "}
+            <Button>Logout</Button>
+          </>
+        ) : (
+          ""
+        )}
       </Tabs>
     </Wrapper>
   );

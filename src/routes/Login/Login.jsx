@@ -1,8 +1,38 @@
-import React from "react";
-import { Image } from "../../components/Navigation/Navigation";
+import React, { useContext, useState } from "react";
+import { Button, Image } from "../../components/Navigation/Navigation";
 import styled from "styled-components";
+import AuthContext from "../../contexts/AuthContext/AuthProvider";
+import axios from "../../api/axios";
+
+const LOGIN_URL = "/auth/login";
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { setAuth } = useContext(AuthContext);
+  //   console.log(username, password);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ username, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log(response.data);
+      const user = response?.data;
+      setAuth({ user });
+      setUsername("");
+      setPassword("");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <Container>
       <Section>
@@ -10,11 +40,20 @@ const Login = () => {
           <Logo>Articles</Logo>
         </Span>
         <Heading>Welcome Client</Heading>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Label>Enter your username</Label>
-          <Input type="text" placeholder="Enter your username" />
+          <Input
+            type="text"
+            placeholder="Enter your username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <Label>Enter your password</Label>
-          <Input type="password" placeholder="Enter your password" />
+          <Input
+            type="password"
+            placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <LoginButton type="submit">Login</LoginButton>
         </Form>
       </Section>
     </Container>
@@ -33,7 +72,7 @@ const Section = styled.section`
   height: 60%;
   margin-right: auto;
   margin-left: auto;
-  border: 1px solid rgb(231,233,235);
+  border: 1px solid rgb(231, 233, 235);
   border-radius: 10px;
 `;
 const Heading = styled.h3`
@@ -69,4 +108,8 @@ const Span = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const LoginButton = styled(Button)`
+  margin-top: 20px;
 `;
