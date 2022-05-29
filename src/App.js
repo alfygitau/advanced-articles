@@ -6,6 +6,7 @@ import Comments from "./routes/comments/Comments";
 import Homepage from "./routes/Homepage/Homepage";
 import Login from "./routes/Login/Login";
 import Posts from "./routes/posts/Posts";
+import CreateArticle from "../src/routes/createArticle/CreateArticle";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="posts" element={<Posts />} />
             <Route path="/comments" element={<Comments />} />
+            <Route path="/create" element={<CreateArticle />} />
           </Route>
         </Route>
       </Routes>
