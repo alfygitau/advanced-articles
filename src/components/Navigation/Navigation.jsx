@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import AuthContext from "../../contexts/AuthContext/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const Navigation = () => {
   const navigate = useNavigate();
 
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useAuth();
   const user = auth.user;
+
+  const handleLogout = () => {
+    setAuth({});
+  };
   console.log("user", user);
 
   const linkStyles = {
     textDecoration: "none",
-    color: "black",
+    // color: "black",
     textTransform: "uppercase",
     marginRight: "20px",
   };
@@ -52,7 +55,7 @@ const Navigation = () => {
             <NavLink style={linkStyles} to="/profile">
               {user.firstName}
             </NavLink>{" "}
-            <Button>Logout</Button>
+            <Button onClick={handleLogout}>Logout</Button>
           </>
         ) : (
           ""

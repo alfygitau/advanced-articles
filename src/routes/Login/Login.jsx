@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Button, Image } from "../../components/Navigation/Navigation";
 import styled from "styled-components";
-import AuthContext from "../../contexts/AuthContext/AuthProvider";
 import axios from "../../api/axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const LOGIN_URL = "/auth/login";
 
@@ -10,8 +11,11 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setAuth } = useContext(AuthContext);
-  //   console.log(username, password);
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,11 +27,10 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(response.data);
       const user = response?.data;
       setAuth({ user });
-      setUsername("");
-      setPassword("");
+      navigate(from, { replace: true });
+      localStorage.setItem("userId", JSON.stringify(user.id));
     } catch (error) {
       console.log(error.message);
     }
