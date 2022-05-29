@@ -7,6 +7,7 @@ import Homepage from "./routes/Homepage/Homepage";
 import Login from "./routes/Login/Login";
 import Posts from "./routes/posts/Posts";
 import CreateArticle from "../src/routes/createArticle/CreateArticle";
+import ArticlesList from "./routes/articles/ArticlesList";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="posts" element={<Posts />} />
             <Route path="/comments" element={<Comments />} />
             <Route path="/create" element={<CreateArticle />} />
+            <Route path="/articles" element={<ArticlesList />} />
           </Route>
         </Route>
       </Routes>
