@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Button } from "../../components/Navigation/Navigation";
 
 const CreateArticle = () => {
   const [author, setAuthor] = useState("");
@@ -35,6 +36,9 @@ const CreateArticle = () => {
           name="title"
           onChange={(e) => setDescription(e.target.value)}
         />
+        <Wrapper>
+          <Button>Create</Button>
+        </Wrapper>
       </Form>
     </Section>
   );
@@ -66,9 +70,16 @@ const Input = styled.input`
 `;
 const Textarea = styled.textarea`
   height: 80px;
+  margin-bottom: 20px;
 `;
 
 const Heading = styled.h5`
   text-align: center;
   text-transform: uppercase;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
