@@ -1,21 +1,39 @@
+import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
+// import axios from "../../api/axios";
 import { Button } from "../../components/Navigation/Navigation";
 
 const CreateArticle = () => {
   const [author, setAuthor] = useState("");
-  const [Title, setTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+    const article = { author, title, imageUrl: image, description };
+    fetch("http://localhost:8000/articles", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(article),
+    })
+      .then(() => {
+        console.log("new blog added");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <Section>
       <Heading>Create a new article</Heading>
-      <Form>
+      <Form onSubmit={handleCreate}>
         <label htmlFor="author">Author</label>
         <Input
           type="text"
-          name="title"
+          name="author"
           onChange={(e) => setAuthor(e.target.value)}
         />
         <label htmlFor="article-title">Article Title</label>
@@ -27,13 +45,13 @@ const CreateArticle = () => {
         <label htmlFor="thumbnail">Image-Url</label>
         <Input
           type="text"
-          name="title"
+          name="thumbnail"
           onChange={(e) => setImage(e.target.value)}
         />
         <label htmlFor="article-description">Article Description</label>
         <Textarea
           type="text"
-          name="title"
+          name="description"
           onChange={(e) => setDescription(e.target.value)}
         />
         <Wrapper>

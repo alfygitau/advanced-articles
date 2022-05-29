@@ -2,6 +2,7 @@
   "articles": [
     {
       "author": "The king maker",
+      "id": 1,
       "imageUrl": "https://media.self.com/photos/60e76fe01f69d35150b50014/4:3/w_2560%2Cc_limit/GettyImages-1254996115.jpg",
       "description": "It’s a common myth that getting fit is only about eating healthy and exercising. In reality, creating a healthy lifestyle and maintaining it isn’t about just those two factors",
       "title": "How to acheive fitness, the practical behind it"
@@ -9,8 +10,16 @@
     {
       "author": "Kris Gunnars, BSc — Medically reviewed by Katherine Marengo LDN, R.D., Nutrition — Updated on March 25, 2022",
       "imageUrl": "https://betterme.world/articles/wp-content/uploads/2021/02/shutterstock_1202415928.jpg",
+      "id": 2,
       "description": "Weight loss is not the answer to every health problem, but if your doctor recommends it, there are tips to help you lose weight safely. A steady weight loss of 1 to 2 pounds per week is recommended for the most effective long-term weight management. That said, many eating plans designed to help you lose weight leave you feeling hungry or unsatisfied, or they cut out major food groups and are not sustainable. These are major reasons why you might find it hard to stick to a healthier eating plan. Everyone has unique needs and different eating styles and tips may work better for you than someone else. You may find you are able to lose weight by following a low carb diet or a diet that has a focus on whole foods, but there are some general principles that apply when you’re trying to lose weight. If you want to lose weight quickly, some of these tips may help, but quick weight loss is rarely sustainable. Focusing on long-term health and habits that you can stick with over time will help improve your health and are more likely to result in lasting weight loss.",
       "title": "Want to Lose Weight Fast? These Science-Backed Tips Can Help You Lose Weight Sustainably"
+    },
+    {
+      "author": "Brittany Smith",
+      "title": "10 Ways to Grow Thick and Wide",
+      "imageUrl": "https://www.mensjournal.com/wp-content/uploads/mf/1280-kettlebell-lateral-raise-mirro.jpg?w=1200&quality=78&strip=all",
+      "description": "Do you secretly or not-so-secretly wish people would refer to your physique as “yoked” or “immense”? Or maybe you’re less of a showboat and just want to grow thick and wide, which is to say build more broad, well-balanced muscle mass?\n\nWhichever objective you identify with, we’ve got the training tips you need to reach that goal, thanks to Shawn Arent, Ph.D., C.S.C.S.D, a Medical and Science Advisory Board member for Blueprint for Athletes and the director of Rutgers University’s Institute for Food, Nutrition, and Health Center for Health & Human Performance.\nBut, prepare to work hard: “People want the easy way out, but it takes hard work, consistency, picking the right lifts, and making your workouts harder,” says Arent.\nSure, genetics play a role in terms of where your development occurs, what muscle and strength imbalances you have, and how long it’ll take to see the results you want, but that doesn’t mean you can’t make the most out of what you have. Plus, Arent adds, most people think they’re working harder than they really are.\n\nSo, implement these seemingly basic tips and you’ll grow your body to massive proportions. Here are the core principles you need to grow thick and wide.",
+      "id": 3
     }
   ]
 }
