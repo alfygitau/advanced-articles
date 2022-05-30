@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import axios from "../../api/axios";
-import { Button } from "../../components/Navigation/Navigation";
+import { Button, Image } from "../../components/Navigation/Navigation";
+// import { Logo } from "../Login/Login";
 
 const CreateArticle = () => {
   const [author, setAuthor] = useState("");
@@ -10,24 +12,30 @@ const CreateArticle = () => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
 
+  const navigate = useNavigate();
+
   const handleCreate = (e) => {
     e.preventDefault();
     const article = { author, title, imageUrl: image, description };
-    fetch("http://localhost:8000/articles", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(article),
-    })
-      .then(() => {
-        console.log("new blog added");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const res = axios.post("http://localhost:8000/articles", article);
+      console.log(res.data);
+      navigate("/articles");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <Section>
+      <LogoContainer>
+        <Image>
+          <img
+            src="https://assets.website-files.com/60d9feb9c76d589e5bee9402/60da12b71d91fe9ed643dbb4_logo-course-x-template.svg"
+            alt="logo"
+          />
+        </Image>
+      </LogoContainer>
       <Heading>Create a new article</Heading>
       <Form onSubmit={handleCreate}>
         <label htmlFor="author">Author</label>
@@ -80,7 +88,7 @@ const Section = styled.div`
   margin-left: auto;
   margin-top: 40px;
   height: fit-content;
-  border: 1px solid black;
+  border: 1px solid rgb(231, 233, 235);
 `;
 const Input = styled.input`
   margin-bottom: 20px;
@@ -97,6 +105,11 @@ const Heading = styled.h5`
 `;
 
 const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
