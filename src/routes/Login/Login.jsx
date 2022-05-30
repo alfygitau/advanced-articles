@@ -40,7 +40,12 @@ const Login = () => {
     <Container>
       <Section>
         <Span>
-          <Logo>Articles</Logo>
+          <Logo>
+            <img
+              src="https://assets.website-files.com/60d9feb9c76d589e5bee9402/60da12b71d91fe9ed643dbb4_logo-course-x-template.svg"
+              alt="logo"
+            />
+          </Logo>
         </Span>
         <Heading>Welcome Client</Heading>
         <Form onSubmit={handleSubmit}>
@@ -104,7 +109,7 @@ const Input = styled.input`
   padding: 10px;
   border-radius: 5px;
 `;
-const Logo = styled(Image)`
+export const Logo = styled(Image)`
   text-align: center;
 `;
 const Span = styled.section`

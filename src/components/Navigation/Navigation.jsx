@@ -24,7 +24,12 @@ const Navigation = () => {
     <Wrapper>
       <Nav>
         <Logo>
-          <Image>Articles</Image>
+          <Image>
+            <img
+              src="https://assets.website-files.com/60d9feb9c76d589e5bee9402/60da12b71d91fe9ed643dbb4_logo-course-x-template.svg"
+              alt="logo"
+            />
+          </Image>
         </Logo>
         <Buttons>
           <Button onClick={(e) => navigate("/login")}>Login</Button>
