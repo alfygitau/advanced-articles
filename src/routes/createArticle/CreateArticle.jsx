@@ -42,6 +42,9 @@ const CreateArticle = () => {
         <Input
           type="text"
           name="author"
+          data-testid="author-input"
+          id="author"
+          placeholder="Enter the author's name"
           onChange={(e) => setAuthor(e.target.value)}
         />
         <label htmlFor="article-title">Article Title</label>
@@ -49,21 +52,24 @@ const CreateArticle = () => {
           type="text"
           name="title"
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter the title"
         />
         <label htmlFor="thumbnail">Image-Url</label>
         <Input
           type="text"
           name="thumbnail"
           onChange={(e) => setImage(e.target.value)}
+          placeholder="Enter image url"
         />
         <label htmlFor="article-description">Article Description</label>
         <Textarea
           type="text"
           name="description"
           onChange={(e) => setDescription(e.target.value)}
+          placeholder="Enter the description"
         />
         <Wrapper>
-          <Button>Create</Button>
+          <Button data-testid="create">Create</Button>
         </Wrapper>
       </Form>
     </Section>

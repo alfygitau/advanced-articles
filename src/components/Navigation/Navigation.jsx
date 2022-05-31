@@ -1,17 +1,16 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Router, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
 
-const Navigation = () => {
+const Navigation = ({ title }) => {
   const navigate = useNavigate();
 
-  const { auth, setAuth } = useAuth();
-  const user = auth.user;
+  const { auth, setAuth } = useAuth() || {};
+  const user = auth?.user;
 
   const handleLogout = () => {
     setAuth({});
   };
-  console.log("user", user);
 
   const linkStyles = {
     textDecoration: "none",
@@ -37,11 +36,13 @@ const Navigation = () => {
           ) : (
             <Button onClick={(e) => navigate("/login")}>Login</Button>
           )}
-          <Button onClick={(e) => navigate("/register")}>Register</Button>
+          <Button onClick={(e) => navigate("/register")} data-testid="logout">
+            Register
+          </Button>
         </Buttons>
       </Nav>
       <Tabs>
-        <NavLink style={linkStyles} to="/">
+        <NavLink data-testid="home" style={linkStyles} to="/">
           Home
         </NavLink>
         <NavLink style={linkStyles} to="/courses">
