@@ -8,6 +8,7 @@ import Login from "./routes/Login/Login";
 import Posts from "./routes/posts/Posts";
 import CreateArticle from "../src/routes/createArticle/CreateArticle";
 import ArticlesList from "./routes/articles/ArticlesList";
+import NotFound from "./routes/NotFound/NotFound";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
             <Route path="/create" element={<CreateArticle />} />
             <Route path="/articles" element={<ArticlesList />} />
           </Route>
+
+          {/* cath all routes */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </div>

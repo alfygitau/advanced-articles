@@ -32,7 +32,11 @@ const Navigation = () => {
           </Image>
         </Logo>
         <Buttons>
-          <Button onClick={(e) => navigate("/login")}>Login</Button>
+          {user ? (
+            <Button onClick={handleLogout}>Logout</Button>
+          ) : (
+            <Button onClick={(e) => navigate("/login")}>Login</Button>
+          )}
           <Button onClick={(e) => navigate("/register")}>Register</Button>
         </Buttons>
       </Nav>
@@ -60,7 +64,6 @@ const Navigation = () => {
             <NavLink style={linkStyles} to="/profile">
               {user.firstName}
             </NavLink>{" "}
-            <Button onClick={handleLogout}>Logout</Button>
           </>
         ) : (
           ""
