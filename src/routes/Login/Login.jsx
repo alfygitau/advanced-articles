@@ -28,9 +28,9 @@ const Login = () => {
         }
       );
       const user = response?.data;
+      localStorage.setItem('user', JSON.stringify(user));
       setAuth({ user });
       navigate(from, { replace: true });
-      localStorage.setItem("userId", JSON.stringify(user.id));
     } catch (error) {
       console.log(error.message);
     }

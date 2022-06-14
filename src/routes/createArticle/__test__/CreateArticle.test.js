@@ -11,7 +11,7 @@ const MockCreateArticle = () => {
 };
 
 describe("input test", () => {
-  it("renders an input test that works", async () => {
+  it("renders an input onchange test that works", async () => {
     render(<MockCreateArticle />);
     const inputElement = screen.getByPlaceholderText(/enter the title/i);
     expect(inputElement).toBeInTheDocument();

@@ -79,7 +79,7 @@ const Initial = styled.div`
 const ImageWrapper = styled.div`
   display: flex;
   flex: 1;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 const MainContainer = styled.div`
   width: 100%;

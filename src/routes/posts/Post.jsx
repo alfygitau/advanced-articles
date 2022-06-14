@@ -1,9 +1,11 @@
 import { nanoid } from "nanoid";
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const Post = ({ post }) => {
-  console.log(post)
+function Post({ post }) {
+  // console.log(post);
+  // const { post } = props;
   const id = nanoid();
 
   return (
@@ -13,9 +15,13 @@ const Post = ({ post }) => {
       <Paragraph>{post.body}</Paragraph>
     </Wrapper>
   );
-};
+}
 
 export default Post;
+
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+};
 
 const Wrapper = styled.div`
   width: 60%;
