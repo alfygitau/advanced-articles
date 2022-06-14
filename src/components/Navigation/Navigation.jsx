@@ -1,14 +1,18 @@
-import { NavLink, Router, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
+import { Toggle } from "../Toggle/Toggle";
 
-const Navigation = ({ title }) => {
+const Navigation = ({ handleChange, checked }) => {
   const navigate = useNavigate();
 
   const { auth, setAuth } = useAuth() || {};
-  const user = auth?.user;
+
+  // const user = auth?.user;
+  const user2 = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
+    localStorage.removeItem("user");
     setAuth({});
   };
 
@@ -31,7 +35,8 @@ const Navigation = ({ title }) => {
           </Image>
         </Logo>
         <Buttons>
-          {user ? (
+          <Toggle handleChange={handleChange} checked={checked} />
+          {user2 ? (
             <Button onClick={handleLogout}>Logout</Button>
           ) : (
             <Button onClick={(e) => navigate("/login")}>Login</Button>
@@ -48,6 +53,9 @@ const Navigation = ({ title }) => {
         <NavLink style={linkStyles} to="/courses">
           Courses
         </NavLink>
+        <NavLink style={linkStyles} to="/create-course">
+          Create Course
+        </NavLink>
         <NavLink style={linkStyles} to="/articles">
           Articles
         </NavLink>
@@ -60,10 +68,10 @@ const Navigation = ({ title }) => {
         <NavLink style={linkStyles} to="/create">
           Create Article
         </NavLink>
-        {user ? (
+        {user2 ? (
           <>
             <NavLink style={linkStyles} to="/profile">
-              {user.firstName}
+              {user2.firstName}
             </NavLink>{" "}
           </>
         ) : (

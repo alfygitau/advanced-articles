@@ -5,16 +5,26 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext/AuthProvider";
+import { ThemeContextProvider } from "./contexts/ThemeContext/ThemeContext";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/*" element={<App />} />
-        </Routes>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ThemeContextProvider>
+            <Routes>
+              <Route path="/*" element={<App />} />
+            </Routes>
+            <ReactQueryDevtools />
+          </ThemeContextProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

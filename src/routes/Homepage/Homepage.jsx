@@ -35,12 +35,12 @@ export default Homepage;
 
 const Container = styled.div`
   width: 100%;
-  height: 60vh;
+  height: fit-content;
   background-color: white;
 `;
 const Wrapper = styled.div`
   width: 90%;
-  height: 90%;
+  height: 60vh;
   margin: auto;
   display: flex;
   gap: 2em;

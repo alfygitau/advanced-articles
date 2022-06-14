@@ -18,7 +18,8 @@ export default NotFound;
 
 const Container = styled.div`
   width: 60%;
+  overflow: none;
+  height: fit-content;
   margin-right: auto;
   margin-left: auto;
-  height: fit-content;
 `;
