@@ -18,7 +18,6 @@ const Navigation = ({ handleChange, checked }) => {
 
   const linkStyles = {
     textDecoration: "none",
-    // color: "black",
     textTransform: "uppercase",
     marginRight: "20px",
   };

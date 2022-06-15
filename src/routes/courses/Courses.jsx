@@ -3,7 +3,6 @@ import { getCourses } from "../../api/axiosPost";
 import styled from "styled-components";
 
 export const Courses = () => {
-
   const {
     isLoading,
     isError,
@@ -19,24 +18,35 @@ export const Courses = () => {
   } else if (isError) {
     content = <p>{error.message}</p>;
   } else {
-    content = courses.slice(0, 20).map((course) => (
-      <div>
+    content = courses.slice(90).map((course) => (
+      <Content>
         <p>{course.university}</p>
         <h4>{course.title}</h4>
         <p>{course.description}</p>
-      </div>
+      </Content>
     ));
   }
 
   return (
     <div>
       <h3 style={{ textAlign: "center" }}>Available courses</h3>
-      <Wrapper>{content}</Wrapper>
+      <Wrapper>
+        <Container>{content}</Container>
+      </Wrapper>
     </div>
   );
 };
 
 const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+const Content = styled.div`
+  
+`;
+const Container = styled.div`
+  height: fit-content;
   width: 70%;
   margin: auto;
 `;
